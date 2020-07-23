@@ -41,10 +41,22 @@ public class UserController {
         return "success";
     }
 
+    //列表，分页，条件查询
     @RequestMapping("list")
     public MyPageImpl<User> list(@RequestBody UserVo vo){
-
+        System.out.println("提供者这边的参数"+vo);
         MyPageImpl<User> list = userService.list(vo);
         return list;
     }
+
+    @RequestMapping("add")
+    public boolean add(@RequestBody User user){
+        return userService.add(user);
+    }
+
+    @RequestMapping("delById")
+    public boolean delById(Integer id){
+        return userService.delById(id);
+    }
+
 }

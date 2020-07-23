@@ -2,6 +2,8 @@ package com.linghuganyu.sc.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -36,10 +38,16 @@ public class User implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
-    private String sex;
+    private Integer sex;
 
     private Integer state;
 
     private String code;
+
+
+    @NotFound(action= NotFoundAction.IGNORE)
+    @OneToOne(targetEntity = DriverCard.class,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "card_id",referencedColumnName = "id",insertable = true,updatable = false,nullable = false)
+    private DriverCard driverCard;
 
 }

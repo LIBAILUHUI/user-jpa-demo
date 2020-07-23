@@ -15,6 +15,20 @@ import org.springframework.stereotype.Component;
 public class UserServiceFallback implements UserService{
     @Override
     public MyPageImpl<User> list(UserVo vo) {
+
+        System.out.println("列表熔断了");
         return null;
+    }
+
+    @Override
+    public boolean add(User user) {
+        System.out.println("添加熔断了");
+        return false;
+    }
+
+    @Override
+    public boolean delById(Integer id) {
+        System.out.println("删除熔断了");
+        return false;
     }
 }

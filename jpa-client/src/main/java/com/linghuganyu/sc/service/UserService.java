@@ -8,11 +8,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "jpa-service",fallback = UserServiceFallback.class)
 public interface UserService {
 
     //分页列表
-    @RequestMapping(value = "user/list")
+    @RequestMapping("user/list")
     MyPageImpl<User> list(@RequestBody UserVo vo);
+
+    @RequestMapping("user/add")
+    public boolean add(@RequestBody User user);
+
+    @RequestMapping("user/delById")
+    public boolean delById(@RequestParam("id") Integer id);
 }

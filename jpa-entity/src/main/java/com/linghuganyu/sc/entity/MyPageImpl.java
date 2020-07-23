@@ -1,6 +1,7 @@
 package com.linghuganyu.sc.entity;
 
 import lombok.Data;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class MyPageImpl<T> {
 
     private Integer size = 3;
 
-    public MyPageImpl(PageImpl<T> pil) {
+    public MyPageImpl(Page<T> pil) {
         this.totalElements = pil.getTotalElements();
         this.content = pil.getContent();
         this.totalPages = pil.getTotalPages();

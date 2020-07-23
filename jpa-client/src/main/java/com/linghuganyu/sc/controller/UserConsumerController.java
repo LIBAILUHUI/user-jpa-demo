@@ -26,8 +26,21 @@ public class UserConsumerController {
 
     @RequestMapping("list")
     public MyPageImpl<User> list(UserVo vo){
+        System.out.println("查询条件============="+vo);
         return userService.list(vo);
     }
 
+
+    @RequestMapping("add")
+    public boolean add(@RequestBody User user){
+        System.out.println(user);
+        return userService.add(user);
+    }
+
+    @RequestMapping("delById")
+    public boolean delById(Integer id){
+        System.out.println(id);
+        return userService.delById(id);
+    }
 
 }
