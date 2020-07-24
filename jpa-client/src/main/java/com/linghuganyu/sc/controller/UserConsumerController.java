@@ -1,8 +1,6 @@
 package com.linghuganyu.sc.controller;
 
-import com.linghuganyu.sc.entity.MyPageImpl;
-import com.linghuganyu.sc.entity.User;
-import com.linghuganyu.sc.entity.UserVo;
+import com.linghuganyu.sc.entity.*;
 import com.linghuganyu.sc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author Administrator
@@ -41,6 +41,17 @@ public class UserConsumerController {
     public boolean delById(Integer id){
         System.out.println(id);
         return userService.delById(id);
+    }
+
+
+    @RequestMapping("deptList")
+    public List<Dept> deptList(){
+        return userService.deptList();
+    }
+
+    @RequestMapping("hobbyList")
+    public List<Hobby> hobbyList(){
+        return userService.hobbyList();
     }
 
 }

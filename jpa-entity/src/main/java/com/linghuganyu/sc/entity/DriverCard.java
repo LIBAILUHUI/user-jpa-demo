@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "hg_drivercard")
-public class DriverCard {
+public class DriverCard implements Serializable {
 
 
     @Id

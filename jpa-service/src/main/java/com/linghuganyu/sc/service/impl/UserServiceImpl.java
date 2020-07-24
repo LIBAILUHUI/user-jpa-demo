@@ -1,8 +1,8 @@
 package com.linghuganyu.sc.service.impl;
 
-import com.linghuganyu.sc.entity.MyPageImpl;
-import com.linghuganyu.sc.entity.User;
-import com.linghuganyu.sc.entity.UserVo;
+import com.linghuganyu.sc.entity.*;
+import com.linghuganyu.sc.respository.DeptRepository;
+import com.linghuganyu.sc.respository.HobbyRepository;
 import com.linghuganyu.sc.respository.UserRepository;
 import com.linghuganyu.sc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +30,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private DeptRepository deptRepository;
+
+    @Autowired
+    private HobbyRepository hobbyRepository;
 
     /**
      * 分页列表
@@ -102,4 +107,18 @@ public class UserServiceImpl implements UserService {
 
 
     }
+
+    //获取所有部门
+    @Override
+    public List<Dept> deptList() {
+        return deptRepository.findAll();
+    }
+
+    //获取所有爱好
+    @Override
+    public List<Hobby> hobbyList() {
+        return hobbyRepository.findAll();
+    }
+
+
 }

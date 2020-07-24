@@ -1,10 +1,10 @@
 package com.linghuganyu.sc.service;
 
-import com.linghuganyu.sc.entity.MyPageImpl;
-import com.linghuganyu.sc.entity.User;
-import com.linghuganyu.sc.entity.UserVo;
+import com.linghuganyu.sc.entity.*;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author Administrator
@@ -30,5 +30,17 @@ public class UserServiceFallback implements UserService{
     public boolean delById(Integer id) {
         System.out.println("删除熔断了");
         return false;
+    }
+
+    @Override
+    public List<Dept> deptList() {
+        System.out.println("部门数据熔断了");
+        return null;
+    }
+
+    @Override
+    public List<Hobby> hobbyList() {
+        System.out.println("爱好数据熔断了");
+        return null;
     }
 }
